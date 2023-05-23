@@ -2,6 +2,7 @@ import "./App.scss";
 import { FaRegCopy } from "react-icons/fa";
 
 function App() {
+	 
   return (
     <div className="App pg-app">
       <h1>Password Generator</h1>
@@ -23,25 +24,34 @@ function App() {
           </div>
 
           <label className="container">
-            One
+            <p>One</p>
             <input type="checkbox" checked={true} />
             <span className="checkmark"></span>
           </label>
           <label className="container">
-            One
+            <p>One</p>
             <input type="checkbox" checked={false} />
             <span className="checkmark"></span>
           </label>
           <label className="container">
-            One
+            <p>One</p>
             <input type="checkbox" checked={false} />
             <span className="checkmark"></span>
           </label>
           <label className="container">
-            One
+            <p>One</p>
             <input type="checkbox" checked={false} />
             <span className="checkmark"></span>
           </label>
+		  <div className="strength-wrapper">
+			<div className="labe">STRENGTH</div>
+			<div className="indicators">
+				<div className="indicator"></div>
+				<div className="indicator"></div>
+				<div className="indicator"></div>
+				<div className="indicator"></div>
+			</div>
+		  </div>
         </div>
       </form>
     </div>
