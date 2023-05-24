@@ -52,7 +52,7 @@ function App() {
               <div className="indicator"></div>
             </div>
           </div>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={() => {}}>
             GENERATE
             <AiOutlineArrowRight />
           </button>

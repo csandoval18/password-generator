@@ -1,8 +1,8 @@
 $main: #a4ffaf;
 $white: #d9d8e0;
 $text: #73717e;
-$base: rgb(43,43,52);
-$bg: rgba(16,15,21,255);
+$base: rgb(43, 43, 52);
+$bg: rgba(16, 15, 21, 255);
 $black: rgb(34, 32, 41);
 $password: #525159;
 
@@ -121,17 +121,6 @@ body {
   }
 }
 
-/* Create a custom checkbox */
-.checkmark {
-  border: 2px solid $white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 15px;
-  width: 15px;
-  background-color: transparent;
-}
-
 /* On mouse-over, add a grey background color */
 .container {
   color: $white;
@@ -139,12 +128,26 @@ body {
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
-  cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  /* Create a custom checkbox */
+  .checkmark {
+    border: 2px solid $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    
+    &:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+  }
 
   /* Hide the browser's default checkbox */
   input {
@@ -162,51 +165,42 @@ body {
     top: 0;
   }
 
-  .checkmark:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-
   /* When the checkbox is checked, add a blue background */
   input:checked ~ .checkmark {
     background-color: $main;
+    
+    /* Show the checkmark when checked */
+    &:after {
+      display: block;
+    }
   }
-}
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 4px;
-  top: 0;
-  width: 5px;
-  height: 10px;
-  border: solid salmon;
-  border-width: 0 4px 4px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  /* Style the checkmark/indicator */
+  .checkmark:before {
+    border: solid salmon;
+    border-width: 0 4px 4px 0;
+    content: "";
+    display: none;
+    left: 4px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+    width: 5px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
 }
 
 .strength-wrapper {
   background-color: $black;
   color: $text;
-  padding: 22px 30px;
   margin-bottom: 28px;
+  padding: 22px 30px;
 }
 
 .btn {
   border: 0;
-  
 }
 
 .btn-primary {
@@ -219,11 +213,9 @@ body {
   justify-content: center;
   margin-bottom: 30px;
   width: 100%;
-  
+
   svg {
     font-size: 14px;
     margin-left: 20px;
   }
 }
-
-
