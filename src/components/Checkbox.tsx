@@ -1,21 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 interface CheckboxProps {
-  labelText: string
+  labelText: string;
 }
 
 const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
-  const [check, setCheck] = useState(false)
-  
+  const [check, setCheck] = useState(false);
+
   return (
-    <div className="checkbox">
-      <label className="container">
+    <div className="">
+      <div className="container">
         <p>{props.labelText}</p>
-        <input type="checkbox" checked={check} onClick={() => setCheck(!check)}/>
+        <input
+          type="checkbox"
+          checked={check}
+          onClick={() => {
+            setCheck(!check);
+            console.log("clicked")
+          }}
+        />
         <span className="checkmark"></span>
-      </label>
+      </div>
     </div>
   );
-}
+};
 
-export default Checkbox
+export default Checkbox;

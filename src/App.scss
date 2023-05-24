@@ -149,15 +149,16 @@ body {
     }
   }
 
-  /* Hide the browser's default checkbox */
-  input {
+  input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 16px;
     left: 0;
+    margin: 0;
     top: 0;
     width: 16px;
+    z-index: 1;
   }
 
   .checkbox {
@@ -165,18 +166,15 @@ body {
     top: 0;
   }
 
-  /* When the checkbox is checked, add a blue background */
   input:checked ~ .checkmark {
     background-color: $main;
 
-    /* Show the checkmark when checked */
     &:after {
       display: block;
     }
   }
 
-  /* Style the checkmark/indicator */
-  .checkmark:before {
+  .checkmark:after {
     border: solid salmon;
     border-width: 0 4px 4px 0;
     content: "";
@@ -213,6 +211,10 @@ body {
   justify-content: center;
   margin-bottom: 30px;
   width: 100%;
+  
+  &:hover {
+    background-color: $white;
+  }
 
   svg {
     font-size: 14px;

@@ -23,7 +23,10 @@ function App() {
           
           <RangeInput />
           
-          <Checkbox labelText="hello"/>
+          <Checkbox labelText="Include Uppercase Letters"/>
+          <Checkbox labelText="Include Lowercase Letters"/>
+          <Checkbox labelText="Include Numbers"/>
+          <Checkbox labelText="Include Symbols"/>
           
           <div className="strength-wrapper">
             <div className="label">STRENGTH</div>
