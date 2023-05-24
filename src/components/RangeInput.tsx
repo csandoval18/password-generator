@@ -6,10 +6,10 @@ const RangeInput: React.FC<RangeInputProps> = () => {
   const [percent, setPercent] = useState<number>(0);
   console.log(percent);
   return (
-    <>
+    <div className="character-length">
       <div className="row-space-between">
         <p>Character Length</p>
-        <span className="count">{percent}</span>
+        <output htmlFor="range" className="count">{percent}</output>
       </div>
 
       <div className="range-input">
@@ -22,7 +22,7 @@ const RangeInput: React.FC<RangeInputProps> = () => {
           onChange={(e) => setPercent(+e.target.value)}
         />
       </div>
-    </>
+    </div>
   );
 };
 
