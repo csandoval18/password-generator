@@ -1,6 +1,8 @@
 import "./App.scss";
 import { FaRegCopy } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import RangeInput from "./components/RangeInput";
+import Checkbox from "./components/Checkbox";
 
 function App() {
   return (
@@ -18,33 +20,13 @@ function App() {
             <p>Character Length</p>
             <span className="count">0</span>
           </div>
-
-          <div className="slider-length">
-            <div className="circle"></div>
-          </div>
-
-          <label className="container">
-            <p>One</p>
-            <input type="checkbox" checked={true} />
-            <span className="checkmark"></span>
-          </label>
-          <label className="container">
-            <p>One</p>
-            <input type="checkbox" checked={false} />
-            <span className="checkmark"></span>
-          </label>
-          <label className="container">
-            <p>One</p>
-            <input type="checkbox" checked={false} />
-            <span className="checkmark"></span>
-          </label>
-          <label className="container">
-            <p>One</p>
-            <input type="checkbox" checked={false} />
-            <span className="checkmark"></span>
-          </label>
+          
+          <RangeInput />
+          
+          <Checkbox labelText="hello"/>
+          
           <div className="strength-wrapper">
-            <div className="labe">STRENGTH</div>
+            <div className="label">STRENGTH</div>
             <div className="indicators">
               <div className="indicator"></div>
               <div className="indicator"></div>
