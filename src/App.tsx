@@ -3,11 +3,12 @@ import { FaRegCopy } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import RangeInput from "./components/RangeInput";
 import Checkbox from "./components/Checkbox";
+import { useState } from "react";
 
 function App() {
   const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const passwordLength = 12;
-  var password = "";
+  const [password, setPassword] = useState<string>("");
   
   return (
     <div className="App pg-app">
