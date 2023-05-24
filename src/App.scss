@@ -1,9 +1,9 @@
 $main: #a4ffaf;
 $white: #d9d8e0;
 $text: #73717e;
-$base: #24232b;
-$bg: #0a090e;
-$black: #18171f;
+$base: rgb(43,43,52);
+$bg: rgba(16,15,21,255);
+$black: rgb(34, 32, 41);
 $password: #525159;
 
 * {
@@ -63,6 +63,7 @@ body {
 
     .icon {
       cursor: pointer;
+      font-size: 20px;
 
       &:hover {
         color: $white;
@@ -86,12 +87,12 @@ body {
     color: $white;
     display: block;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .count {
     color: $main;
-    font-size: 20px;
+    font-size: 26px;
 
     &:hover {
       color: $white;
@@ -150,8 +151,10 @@ body {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
+    height: 16px;
+    left: 0;
+    top: 0;
+    width: 16px;
   }
 
   .checkbox {
@@ -159,7 +162,7 @@ body {
     top: 0;
   }
 
-  &:hover input ~ .checkmark {
+  .checkmark:hover input ~ .checkmark {
     background-color: #ccc;
   }
 
@@ -195,7 +198,7 @@ body {
 }
 
 .strength-wrapper {
-  background-color: $bg;
+  background-color: $black;
   color: $text;
   padding: 22px 30px;
   margin-bottom: 28px;
@@ -214,6 +217,7 @@ body {
   font-weight: 600;
   height: 60px;
   justify-content: center;
+  margin-bottom: 30px;
   width: 100%;
   
   svg {
@@ -222,22 +226,4 @@ body {
   }
 }
 
-// .App-logo {
-//   height: 40vmin;
-//   pointer-events: none;
-// }
 
-// @media () {
-//   .App-logo {
-//     animation: App-logo-spin infinite 20s linear;
-//   }
-// }
-
-// @keyframes App-logo-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
