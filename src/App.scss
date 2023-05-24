@@ -123,8 +123,8 @@ body {
     background: #a4ffaf !important;
     border: none;
     border-radius: 50%;
-    height: 20px;
-    width: 20px;
+    height: 23px;
+    width: 23px;
   }
 }
 
@@ -149,8 +149,7 @@ body {
   }
 }
 
-/* On mouse-over, add a grey background color */
-.container {
+.checkbox-wrapper {
   color: $white;
   display: block;
   position: relative;
@@ -162,7 +161,6 @@ body {
   -ms-user-select: none;
   user-select: none;
 
-  /* Create a custom checkbox */
   .checkmark {
     border: 2px solid $white;
     position: absolute;
@@ -221,8 +219,22 @@ body {
 .strength-wrapper {
   background-color: $black;
   color: $text;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 28px;
   padding: 22px 30px;
+  
+  .indicators {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 8px);
+    
+    .indicator-1, .indicator-2, .indicator-3, .indicator-4 {
+      border: 2px solid $white;
+      height: 100%;
+      width: 5px;
+    }
+  }
 }
 
 .btn {
