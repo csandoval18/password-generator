@@ -16,13 +16,7 @@ function App() {
           </div>
         </div>
         <div className="settings-wrapper">
-          <div className="row-space-between">
-            <p>Character Length</p>
-            <span className="count">0</span>
-          </div>
-          
           <RangeInput />
-          
           <Checkbox labelText="Include Uppercase Letters"/>
           <Checkbox labelText="Include Lowercase Letters"/>
           <Checkbox labelText="Include Numbers"/>

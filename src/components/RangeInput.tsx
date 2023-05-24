@@ -9,7 +9,7 @@ const RangeInput: React.FC<RangeInputProps> = () => {
     <>
       <div className="row-space-between">
         <p>Character Length</p>
-        <span className="count">0</span>
+        <span className="count">{percent}</span>
       </div>
 
       <div className="range-input">
