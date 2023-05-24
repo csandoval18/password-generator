@@ -13,9 +13,8 @@ const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
       <input
         type="checkbox"
         checked={check}
-        onClick={() => {
+        onChange={() => {
           setCheck(!check);
-          console.log("clicked");
         }}
       />
       <span className="checkmark"></span>

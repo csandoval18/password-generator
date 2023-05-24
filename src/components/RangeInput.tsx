@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
-interface RangeInputProps {}
+interface RangeInputProps {
+  charLength: number,
+  setCharLength: React.Dispatch<React.SetStateAction<number>>
+}
 
-const RangeInput: React.FC<RangeInputProps> = () => {
-  const [percent, setPercent] = useState<number>(0);
-  console.log(percent);
+const RangeInput: React.FC<RangeInputProps> = (props :RangeInputProps) => {
   return (
     <div className="character-length">
       <div className="row-space-between">
         <p>Character Length</p>
-        <output htmlFor="range" className="count">{percent}</output>
+        <output htmlFor="range" className="count">{props.charLength}</output>
       </div>
 
       <div className="range-input">
         <input
           type="range"
           min={0}
-          max={255}
-          value={percent}
+          max={50}
+          value={props.charLength}
           step={1}
-          onChange={(e) => setPercent(+e.target.value)}
+          onChange={(e) => props.setCharLength(+e.target.value)}
         />
       </div>
     </div>

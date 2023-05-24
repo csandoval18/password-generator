@@ -1,9 +1,9 @@
 $main: #a4ffaf;
 $white: #d9d8e0;
 $text: #73717e;
-$base: rgb(43, 43, 52);
-$bg: rgba(16, 15, 21, 255);
-$black: rgb(34, 32, 41);
+$base: rgb(34, 34, 41);
+$bg: rgba(16, 15, 21);
+$black: rgb(24, 22, 29);
 $password: #525159;
 
 * {
@@ -39,7 +39,7 @@ body {
       font-size: 22px;
       display: block;
       outline: none;
-      padding: 12px 22px;
+      padding: 16px 22px;
       width: 400px;
     }
   }
