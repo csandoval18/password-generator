@@ -4,38 +4,56 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import RangeInput from "./components/RangeInput";
 import Checkbox from "./components/Checkbox";
 import { useEffect, useState } from "react";
-import crypto from 'crypto';
 
 function App() {
-  const chars =
-    "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const passwordLength = 12;
   const [password, setPassword] = useState<string>("");
-  const [charLength, setCharLength] = useState<number>(0);
+  const [passLength, setPassLength] = useState<number>(0);
   const [radioToggles, setRadioToggles] = useState<number[]>([0, 0, 0, 0]);
 
   const generatePassword = () => {
-    for (var i = 0; i <= passwordLength; i++) {
-      const n = crypto.randomInt(0, 1000000);
+    setPassword("");
+    const chars =
+      "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let randomNum = 0,
+      pickChar = "",
+      password = "";
+
+    console.log("passLength:", passLength);
+    for (let i = 0; i < passLength; ++i) {
+      randomNum = Math.floor(Math.random() * passLength);
+      pickChar = chars[randomNum];
+      password += pickChar;
     }
+    setPassword(password);
   };
 
   useEffect(() => {
-    console.log("charLength:", charLength);
-  }, [charLength]);
+    console.log("password:", password);
+  }, [password]);
 
   return (
     <div className="App pg-app">
       <h1>Password Generator</h1>
-      <form action="" className="pg-form" onSubmit={(e) => e.preventDefault()}>
+      <form
+        action=""
+        className="pg-form"
+        onSubmit={(e: { preventDefault: () => any }) => e.preventDefault()}
+      >
         <div className="input-wrapper">
-          <input type="text" className="password" />
+          <input
+            type="text"
+            className="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
           <div className="icon-wrapper">
             <FaRegCopy className="icon" />
           </div>
         </div>
         <div className="settings-wrapper">
-          <RangeInput charLength={charLength} setCharLength={setCharLength} />
+          <RangeInput passLength={passLength} setPassLength={setPassLength} />
           <Checkbox labelText="Include Uppercase Letters" />
           <Checkbox labelText="Include Lowercase Letters" />
           <Checkbox labelText="Include Numbers" />
@@ -50,7 +68,12 @@ function App() {
               <div className="indicator-4"></div>
             </div>
           </div>
-          <button className="btn btn-primary" onClick={() => {}}>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              generatePassword();
+            }}
+          >
             GENERATE
             <AiOutlineArrowRight />
           </button>
