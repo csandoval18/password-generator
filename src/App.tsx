@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import RangeInput from "./components/RangeInput";
 import Checkbox from "./components/Checkbox";
 import { useEffect, useState } from "react";
-
+import crypto from 'crypto';
 
 function App() {
   const chars =
@@ -12,11 +12,17 @@ function App() {
   const passwordLength = 12;
   const [password, setPassword] = useState<string>("");
   const [charLength, setCharLength] = useState<number>(0);
-  const [radioToggles, setRadioToggles] = useState<number[]>([0,0,0,0])
-  
+  const [radioToggles, setRadioToggles] = useState<number[]>([0, 0, 0, 0]);
+
+  const generatePassword = () => {
+    for (var i = 0; i <= passwordLength; i++) {
+      const n = crypto.randomInt(0, 1000000);
+    }
+  };
+
   useEffect(() => {
-    console.log("charLength:", charLength)
-  }, [charLength])
+    console.log("charLength:", charLength);
+  }, [charLength]);
 
   return (
     <div className="App pg-app">
