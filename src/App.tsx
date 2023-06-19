@@ -1,35 +1,58 @@
-import "./App.scss";
-import { FaRegCopy } from "react-icons/fa";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import RangeInput from "./components/RangeInput";
-import Checkbox from "./components/Checkbox";
-import { useEffect, useState } from "react";
+import "./App.scss"
+import { FaRegCopy } from "react-icons/fa"
+import { AiOutlineArrowRight } from "react-icons/ai"
+import RangeInput from "./components/RangeInput"
+import Checkbox from "./components/Checkbox"
+import { useEffect, useState } from "react"
+import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core"
+import * as zxcvbnCommonPackage from "@zxcvbn-ts/language-common"
+import * as zxcvbnEnPackage from "@zxcvbn-ts/language-en"
 
 function App() {
-  const [password, setPassword] = useState<string>("");
-  const [passLength, setPassLength] = useState<number>(0);
-  const [radioToggles, setRadioToggles] = useState<number[]>([0, 0, 0, 0]);
+  const [password, setPassword] = useState<string>("")
+  const [passLength, setPassLength] = useState<number>(0)
+  const [radioToggles, setRadioToggles] = useState<number[]>([0, 0, 0, 0])
+  const [passStrength, setPassStrength] = useState<string[]>([
+    "transparent",
+    "transparent",
+    "transparent",
+    "transparent",
+  ])
 
   const generatePassword = () => {
-    setPassword("");
+    setPassword("")
     const chars =
-      "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     let randomNum = 0,
       pickChar = "",
-      password = "";
+      password = ""
 
-    console.log("passLength:", passLength);
+    console.log("passLength:", passLength)
     for (let i = 0; i < passLength; ++i) {
-      randomNum = Math.floor(Math.random() * passLength);
-      pickChar = chars[randomNum];
-      password += pickChar;
+      randomNum = Math.floor(Math.random() * passLength)
+      pickChar = chars[randomNum]
+      password += pickChar
     }
-    setPassword(password);
-  };
+    setPassword(password)
+  }
+
+  const getPasswordStrength = () => {
+    const options = {
+      dictionary: {
+        ...zxcvbnCommonPackage.dictionary,
+        ...zxcvbnEnPackage.dictionary,
+      },
+      graphs: zxcvbnCommonPackage.adjacencyGraphs,
+      translations: zxcvbnEnPackage.translations,
+    }
+    zxcvbnOptions.setOptions(options)
+
+    zxcvbn(password)
+  }
 
   useEffect(() => {
-    console.log("password:", password);
-  }, [password]);
+    console.log("password:", password)
+  }, [password])
 
   return (
     <div className="App pg-app">
@@ -45,7 +68,7 @@ function App() {
             className="password"
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setPassword(e.target.value)
             }}
           />
           <div className="icon-wrapper">
@@ -61,17 +84,21 @@ function App() {
 
           <div className="strength-wrapper">
             <div className="label">STRENGTH</div>
+
             <div className="indicators">
-              <div className="indicator-1"></div>
-              <div className="indicator-2"></div>
-              <div className="indicator-3"></div>
-              <div className="indicator-4"></div>
+              {passStrength.map((color) => (
+                <div
+                  className="indicator-box"
+                  style={{ backgroundColor: color }}
+                ></div>
+              ))}
             </div>
           </div>
           <button
             className="btn btn-primary"
             onClick={() => {
-              generatePassword();
+              generatePassword()
+              getPasswordStrength()
             }}
           >
             GENERATE
@@ -80,7 +107,7 @@ function App() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

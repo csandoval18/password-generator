@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 interface RangeInputProps {
-  passLength: number;
-  setPassLength: React.Dispatch<React.SetStateAction<number>>;
+  passLength: number
+  setPassLength: React.Dispatch<React.SetStateAction<number>>
 }
 
 const RangeInput: React.FC<RangeInputProps> = (props: RangeInputProps) => {
@@ -26,7 +26,7 @@ const RangeInput: React.FC<RangeInputProps> = (props: RangeInputProps) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RangeInput;
+export default RangeInput

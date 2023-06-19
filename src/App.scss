@@ -150,25 +150,23 @@ body {
 }
 
 .checkbox-wrapper {
-  color: $white;
-  display: block;
+  font-size: 22px;
+  margin-bottom: 12px;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
-  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 
   .checkmark {
+    background-color: transparent;
     border: 2px solid $white;
     position: absolute;
-    top: 0;
     left: 0;
+    top: 0;
     height: 15px;
     width: 15px;
-    background-color: transparent;
 
     &:hover input ~ .checkmark {
       background-color: #ccc;
@@ -176,13 +174,13 @@ body {
   }
 
   input[type="checkbox"] {
+    cursor: pointer;
     position: absolute;
     opacity: 0;
-    cursor: pointer;
-    height: 16px;
-    left: 0;
     margin: 0;
+    left: 0;
     top: 0;
+    height: 16px;
     width: 16px;
     z-index: 1;
   }
@@ -206,10 +204,10 @@ body {
     content: "";
     display: none;
     left: 3px;
-    height: 10px;
-    position: absolute;
     top: -1px;
+    position: absolute;
     transform: rotate(45deg);
+    height: 10px;
     width: 5px;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -223,13 +221,13 @@ body {
   justify-content: space-between;
   margin-bottom: 28px;
   padding: 22px 30px;
-  
+
   .indicators {
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(4, 8px);
-    
-    .indicator-1, .indicator-2, .indicator-3, .indicator-4 {
+
+    .indicator-box {
       border: 2px solid $white;
       height: 100%;
       width: 5px;
