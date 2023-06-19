@@ -12,7 +12,8 @@ function App() {
   const [password, setPassword] = useState<string>("")
   const [passLength, setPassLength] = useState<number>(0)
   const [radioToggles, setRadioToggles] = useState<number[]>([0, 0, 0, 0])
-  const [passStrength, setPassStrength] = useState<string[]>([
+  const [passStrength, setPassStrength] = useState<any>(0)
+  const [strengthColors, setStrengthColors] = useState<string[]>([
     "transparent",
     "transparent",
     "transparent",
@@ -27,7 +28,6 @@ function App() {
       pickChar = "",
       password = ""
 
-    console.log("passLength:", passLength)
     for (let i = 0; i < passLength; ++i) {
       randomNum = Math.floor(Math.random() * passLength)
       pickChar = chars[randomNum]
@@ -46,8 +46,8 @@ function App() {
       translations: zxcvbnEnPackage.translations,
     }
     zxcvbnOptions.setOptions(options)
-
-    zxcvbn(password)
+    let { score } = zxcvbn(password)
+    console.log(score)
   }
 
   useEffect(() => {
@@ -69,6 +69,7 @@ function App() {
             value={password}
             onChange={(e) => {
               setPassword(e.target.value)
+              getPasswordStrength()
             }}
           />
           <div className="icon-wrapper">
@@ -86,10 +87,11 @@ function App() {
             <div className="label">STRENGTH</div>
 
             <div className="indicators">
-              {passStrength.map((color) => (
+              {strengthColors.map((color, i) => (
                 <div
                   className="indicator-box"
                   style={{ backgroundColor: color }}
+                  key={i}
                 ></div>
               ))}
             </div>
