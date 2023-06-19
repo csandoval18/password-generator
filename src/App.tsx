@@ -46,7 +46,9 @@ function App() {
       translations: zxcvbnEnPackage.translations,
     }
     zxcvbnOptions.setOptions(options)
+
     let { score } = zxcvbn(password)
+    setPassStrength(score)
     console.log(score)
   }
 
