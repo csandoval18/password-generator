@@ -19,8 +19,9 @@ function App() {
     "transparent",
     "transparent",
   ])
+  const [copyStatus, setCopyStatus] = useState<string>("")
 
-  const generatePassword = () => {
+  const generatePassword = async () => {
     setPassword("")
     const chars =
       "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -34,6 +35,15 @@ function App() {
       password += pickChar
     }
     setPassword(password)
+  }
+
+  const copyToClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopyStatus("Copied!")
+    } catch (err) {
+      setCopyStatus("Failed to copy!")
+    }
   }
 
   const getPasswordStrength = () => {
@@ -50,6 +60,48 @@ function App() {
     let { score } = zxcvbn(password)
     setPassStrength(score)
     console.log(score)
+
+    switch (score) {
+      case 1:
+        setStrengthColors([
+          "rgb(239, 20, 55)",
+          "transparent",
+          "transparent",
+          "transparent",
+        ])
+        break
+      case 2:
+        setStrengthColors([
+          "rgb(239, 20, 55)",
+          "rgb(243 126 75)",
+          "transparent",
+          "transparent",
+        ])
+        break
+      case 3:
+        setStrengthColors([
+          "rgb(239, 20, 55)",
+          "rgb(243 126 75)",
+          "rgb(232 211 9)",
+          "transparent",
+        ])
+        break
+      case 4:
+        setStrengthColors([
+          "rgb(239, 20, 55)",
+          "rgb(243 126 75)",
+          "rgb(232 211 9)",
+          "rgb(164, 255, 175)",
+        ])
+        break
+      default:
+        setStrengthColors([
+          "transparent",
+          "transparent",
+          "transparent",
+          "transparent",
+        ])
+    }
   }
 
   useEffect(() => {
@@ -74,7 +126,12 @@ function App() {
               getPasswordStrength()
             }}
           />
-          <div className="icon-wrapper">
+          <div
+            className="icon-wrapper"
+            onClick={() => {
+              copyToClipBoard(password)
+            }}
+          >
             <FaRegCopy className="icon" />
           </div>
         </div>
@@ -100,8 +157,8 @@ function App() {
           </div>
           <button
             className="btn btn-primary"
-            onClick={() => {
-              generatePassword()
+            onClick={async () => {
+              await generatePassword()
               getPasswordStrength()
             }}
           >
